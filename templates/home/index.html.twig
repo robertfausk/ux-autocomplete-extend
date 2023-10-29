@@ -11,6 +11,23 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
+    <label for="idPost">Post</label>
+    <select
+        id="idPost"
+        {{ stimulus_controller('custom-autocomplete symfony/ux-autocomplete/autocomplete', {
+            url: path('ux_entity_autocomplete', { alias: 'post' }),
+            optionsAsHtml: true,
+            tomSelectOptions: {
+                highlight: true,
+                persist: false,
+                maxItems: 1,
+                placeholder: 'Choose one Post...',
+            },
+        }) }}
+        {{ stimulus_controller('custom-autocomplete') }}
+        data-controller="custom-autocomplete"
+    />
+
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href="{{ '/home/egabor/work/open-source/tmp/src/Controller/PostController.php'|file_link(0) }}">src/Controller/PostController.php</a></code></li>

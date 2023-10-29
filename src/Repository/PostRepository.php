@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -63,4 +64,15 @@ class PostRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function getPostBySearchQueryBuilder(string $search): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('p');
+        $search = \sprintf('%%%s%%', $search);
+
+        return $qb
+            ->where('p.title like :search')
+            ->setParameter('search', $search)
+            ->orderBy('p.title', 'ASC');
+    }
 }

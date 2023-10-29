@@ -58,6 +58,10 @@
         "symfony/polyfill-php81": "*"
     },
     "scripts": {
+        "init-database": [
+            "bin/console doctrine:schema:update --force",
+            "bin/console doctrine:fixtures:load --no-interaction"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

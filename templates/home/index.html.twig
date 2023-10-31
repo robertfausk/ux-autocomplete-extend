@@ -14,7 +14,7 @@
     <label for="idPost">Post</label>
     <select
         id="idPost"
-        {{ stimulus_controller('custom-autocomplete symfony/ux-autocomplete/autocomplete', {
+        {{ stimulus_controller('symfony/ux-autocomplete/autocomplete', {
             url: path('ux_entity_autocomplete', { alias: 'post' }),
             optionsAsHtml: true,
             tomSelectOptions: {
@@ -25,7 +25,6 @@
             },
         }) }}
         {{ stimulus_controller('custom-autocomplete') }}
-        data-controller="custom-autocomplete"
     />
 
     This friendly message is coming from:
